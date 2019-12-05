@@ -29,7 +29,8 @@ npm install
 ```
 Rodar o servidor do vue em localhost:8080
 ```
-npm run dev```
+npm run dev
+```
 
 ## License
 
