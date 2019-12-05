@@ -18,7 +18,7 @@ O projeto se baseia em um sistema de perguntas e respostas que auxiliará os alu
 * **Porfirio Amaro**
 
 
-Veja a lista dos [contribuidores](https://github.com/your/project/contributors) que participaram neste projeto.
+Veja a lista dos [contribuidores](https://github.com/antoniofern/projeto-pweb/graphs/contributors) que participaram neste projeto.
 
 
 
