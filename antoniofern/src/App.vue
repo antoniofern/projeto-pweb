@@ -48,11 +48,14 @@
                       {{u.login}}
                     </td>
                     <td>
-                      {{u.senha}}
+                      {{ u.senha }}
                     </td>
                     <td>
                       <button @click="deleteUser(u)" class="btn btn-danger">
                         Delete
+                      </button>
+                      <button @click="editUser(u)" class="btn btn-success">
+                        Editar
                       </button>
                     </td>
                   </tr>
@@ -102,6 +105,9 @@ export default {
         usersRef.child(user['.key']).remove();
         toastr.success('Usuário removido');
       }
+    },
+    editUser(user) {
+      usersRef.child(user['.key']).update({edit:true});
     }
   }
 }
