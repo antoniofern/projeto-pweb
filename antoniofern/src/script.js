@@ -145,3 +145,13 @@ function insertNewRecord(data) {
                        <a onClick="onDelete(this)">Deletar</a>`;
 }
 
+function resetForm() {
+    document.getElementById("idQuestion").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("nivel").value = "";
+    document.getElementById("fonte").value = "";
+    document.getElementById("ano").value = "";
+    document.getElementById("area").value = "";
+    document.getElementById("tipo").value = "";
+    selectedRow = null;
+}
