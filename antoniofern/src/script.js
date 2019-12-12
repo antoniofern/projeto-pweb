@@ -111,3 +111,16 @@ function onFormSubmit() {
         resetForm();
     }
 }
+
+function readFormData() {
+    var formData = {};
+    formData["idQuestion"] = document.getElementById("idQuestion").value;
+    formData["descricao"] = document.getElementById("descricao").value;
+    formData["nivel"] = document.getElementById("nivel").value;
+    formData["fonte"] = document.getElementById("fonte").value;
+    formData["ano"] = document.getElementById("ano").value;
+    formData["area"] = document.getElementById("area").value;
+    formData["tipo"] = document.getElementById("tipo").value;
+    return formData;
+}
+
