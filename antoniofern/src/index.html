@@ -1,4 +1,13 @@
-<div id="quiz">
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> ENADE QUIZ </title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div id="quiz">
   <div id="quiz-header">
     <h1>ENADE QUIZ</h1>
     <p class="faded">Começar o quiz</p>
@@ -7,3 +16,51 @@
     <p><a href="#" id="quiz-start-btn" class="quiz-button">Start</a></p>
   </div>
 </div>
+  <table>
+        <tr>
+            <td>
+                <form onsubmit="event.preventDefault();onFormSubmit();" autocomplete="off">
+                    <div>
+                        <label>id da questao</label><label class="validation-error hide" id="idQuestionValidador"></label>
+                        <input type="text" name="idQuestion" id="idQuestion">
+                    </div>
+                    <div>
+                        <label>Descricao</label>
+                        <input type="text" name="descricao" id="descricao">
+                    </div>
+                    <div>
+                        <label>Nivel</label>
+                        <input type="text" name="nivel" id="nivel">
+                    </div>
+                    <div>
+                        <label>Fonte</label>
+                        <input type="text" name="fonte" id="fonte">
+                    </div>
+                    <div>
+                        <label>Ano</label>
+                        <input type="text" name="ano" id="ano">
+                    </div>
+                    <div  class="form-action-buttons">
+                        <input type="submit" value="Submit">
+                    </div>
+                </form>
+            </td>
+            <td>
+                <table class="list" id="employeeList">
+                    <thead>
+                        <tr>
+                            <th>id da questao</th>
+                            <th>Descricao</th>
+                            <th>Nivel</th>
+                            <th>Fonte</th>
+                            <th>Ano</th>
+                        </tr>
+                    </thead>
+                </table>
+            </td>
+        </tr>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
