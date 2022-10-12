@@ -97,3 +97,101 @@ $('#quiz').quiz({
     }
   ]
 });
+
+
+var selectedRow = null
+
+function onFormSubmit() {
+    if (validate()) {
+        var formData = readFormData();
+        if (selectedRow == null)
+            insertNewRecord(formData);
+        else
+            updateRecord(formData);
+        resetForm();
+    }
+}
+
+function readFormData() {
+    var formData = {};
+    formData["idQuestion"] = document.getElementById("idQuestion").value;
+    formData["descricao"] = document.getElementById("descricao").value;
+    formData["nivel"] = document.getElementById("nivel").value;
+    formData["fonte"] = document.getElementById("fonte").value;
+    formData["ano"] = document.getElementById("ano").value;
+    formData["area"] = document.getElementById("area").value;
+    formData["tipo"] = document.getElementById("tipo").value;
+    return formData;
+}
+function insertNewRecord(data) {
+    var table = document.getElementById("employeeList").getElementsByTagName('tbody')[0];
+    var newRow = table.insertRow(table.length);
+    cell1 = newRow.insertCell(0);
+    cell1.innerHTML = data.idQuestion;
+    cell2 = newRow.insertCell(1);
+    cell2.innerHTML = data.descricao;
+    cell3 = newRow.insertCell(2);
+    cell3.innerHTML = data.nivel;
+    cell4 = newRow.insertCell(3);
+    cell4.innerHTML = data.fonte;
+    cell5 = newRow.insertCell(4);
+    cell5.innerHTML = data.ano;
+    cell6 = newRow.insertCell(5);
+    cell6.innerHTML = data.area;
+    cell7 = newRow.insertCell(6);
+    cell7.innerHTML = data.tipo;
+    cell8 = newRow.insertCell(7);
+    cell8.innerHTML = `<a onClick="onEdit(this)">Editar</a>
+                       <a onClick="onDelete(this)">Deletar</a>`;
+}
+
+function resetForm() {
+    document.getElementById("idQuestion").value = "";
+    document.getElementById("descricao").value = "";
+    document.getElementById("nivel").value = "";
+    document.getElementById("fonte").value = "";
+    document.getElementById("ano").value = "";
+    document.getElementById("area").value = "";
+    document.getElementById("tipo").value = "";
+    selectedRow = null;
+}
+
+function onEdit(td) {
+    selectedRow = td.parentElement.parentElement;
+    document.getElementById("idQuestion").value = selectedRow.cells[0].innerHTML;
+    document.getElementById("descricao").value = selectedRow.cells[1].innerHTML;
+    document.getElementById("nivel").value = selectedRow.cells[2].innerHTML;
+    document.getElementById("fonte").value = selectedRow.cells[3].innerHTML;
+    document.getElementById("ano").value = selectedRow.cells[4].innerHTML;
+    document.getElementById("area").value = selectedRow.cells[5].innerHTML;
+    document.getElementById("tipo").value = selectedRow.cells[6].innerHTML;
+}
+function updateRecord(formData) {
+    selectedRow.cells[0].innerHTML = formData.idQuestion;
+    selectedRow.cells[1].innerHTML = formData.descricao;
+    selectedRow.cells[2].innerHTML = formData.nivel;
+    selectedRow.cells[3].innerHTML = formData.fonte;
+    selectedRow.cells[4].innerHTML = formData.ano;
+    selectedRow.cells[5].innerHTML = formData.area;
+    selectedRow.cells[6].innerHTML = formData.tipo;
+}
+
+function onDelete(td) {
+    if (confirm('Você quer deletar mesmo?')) {
+        row = td.parentElement.parentElement;
+        document.getElementById("employeeList").deleteRow(row.rowIndex);
+        resetForm();
+    }
+}
+function validate() {
+    isValid = true;
+    if (document.getElementById("idQuestion").value == "") {
+        isValid = false;
+        document.getElementById("idQuestionValidador").classList.remove("hide");
+    } else {
+        isValid = true;
+        if (!document.getElementById("idQuestionValidador").classList.contains("hide"))
+            document.getElementById("idQuestionValidador").classList.add("hide");
+    }
+    return isValid;
+}
